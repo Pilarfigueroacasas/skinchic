@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <section>
+      <ion-toolbar>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-back-button color="dark" default-href="#"></ion-back-button>
+          </ion-buttons>
+          <ion-title>SKINCHIC</ion-title>
+
+        </ion-toolbar>
+        
+        <ion-button color="medium" size="small" shape="round" [routerLink]="['/categorias/Make up']" routerLinkActive="router-link-active" >Make up</ion-button>
+        <ion-button color="medium" size="small" shape="round" [routerLink]="['/categorias/Skincare']" routerLinkActive="router-link-active" >Skincare</ion-button>
+        <ion-button color="medium" size="small" shape="round" [routerLink]="['/categorias/Fragancias']" routerLinkActive="router-link-active" >Fragancias</ion-button>
+
+      </ion-toolbar>
+      
+    </section>
+    
+  </ion-header>
+
+
+  <ion-card *ngFor="let item of categoria?.productos" [routerLink]="['/productos', item.nombre]" >
+    <img alt="Silhouette of mountains" src="{{item.imagen}}"/>
+    <ion-card-header>
+      <ion-card-title>{{item.nombre}}</ion-card-title>
+      <ion-card-subtitle>${{item.precio}}</ion-card-subtitle>
+    </ion-card-header>
+    
+  
+    <ion-card-content>
+      {{item.descripcion}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

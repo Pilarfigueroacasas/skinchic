@@ -1,0 +1,7 @@
+{
+  "name": "Skinchic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

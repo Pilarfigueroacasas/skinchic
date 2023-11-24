@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Carrito
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button color="dark" default-href="#" [routerLink]="['/categorias/Make up']" routerLinkActive="router-link-active"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="titulo" >Bienvenida/o a tu carrito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of cartService.carrito">
+          <ion-thumbnail slot="start">
+            <img alt="{{item.producto.nombre}}" src="{{item.producto.imagen}}" />
+          </ion-thumbnail>
+         
+            <ion-label>
+              <h2>{{item.producto.nombre}}</h2>
+              <p>Precio: {{item.producto.precio}}</p>
+              <p>Cantidad: {{item.cantidad}}</p>
+            </ion-label>
+            <ion-button  color="dark" fill="clear" (click)="cartService.sumarProducto(item.producto.nombre)">+1</ion-button>
+            <ion-button  color="dark" fill="clear" (click)="cartService.restarProducto(item.producto.nombre)">-1</ion-button>
+
+        
+          <ion-button color="dark" [fill]="'clear'" (click)="cartService.eliminarProducto(item.producto.nombre)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label>Subtotal: {{cartService.subtotalCarrito}} </ion-label>
+          
+        </ion-item>
+        <ion-item>
+          <ion-label>Descuentos: {{cartService.descuentoCarrito}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Envio: {{cartService.envioCarrito}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Total: {{cartService.totalCarrito}}</ion-label>
+        </ion-item>
+        </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+    <ion-button expand="block" size="small" color="medium" (click)="cartService.vaciarCarrito()">VACIA TU CARRITO</ion-button>
+    <ion-button expand="block" fill="outline" size="medium" color="medium" (click)="realizarPedido()">INICIAR COMPRA</ion-button>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Efectivo o transferencia bancaria.</ion-card-subtitle>
+        <ion-card-subtitle>METODOS DE PAGO</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Inicia tu compra y te enviamos el link de pago o cordinaremos la entrega para realizar la compra en efectivo.
+      </ion-card-content>
+    </ion-card>
+</ion-content>
